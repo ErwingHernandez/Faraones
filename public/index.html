@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Test</title>
+  <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+  <h1>Test de WebSockets con Socket.IO</h1>
+  <p>Abre la consola del navegador para ver los mensajes de WebSocket</p>
+
+  <script>
+    // Conectar al servidor WebSocket (esto usará la misma URL que tu servidor Express)
+    const socket = io();
+
+    // Escuchar eventos de mensaje desde el servidor
+    socket.on('mensaje', (data) => {
+      console.log('Mensaje recibido del servidor:', data);
+    });
+
+    // Enviar un mensaje al servidor
+    socket.emit('mensaje', 'Hola desde el cliente WebSocket');
+
+    socket.on('notificacion', (data) => {
+      console.log('Notificación recibida:', data);
+    }); 
+  </script>
+</body>
+</html>
